@@ -5,6 +5,9 @@ import Login from '../Pages/Login';
 import MainLayouts from '../Layouts/MainLayouts';
 import Home from '../Pages/Home';
 import SignUp from '../Pages/SignUp';
+import JobDetails from '../CommonLayout/JobDetails';
+import PrivetRoute from '../PrivetRoute/PrivetRoute';
+import ApplyJob from '../CommonLayout/ApplyJob';
 
 
 const router = createBrowserRouter([
@@ -27,6 +30,16 @@ const router = createBrowserRouter([
             },
         ],
     },
+    {
+        path: "/jobdetails/:id",
+        element: <PrivetRoute> <JobDetails></JobDetails></PrivetRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/jobs/${params.id}`)
+    },
+    {
+        path: "/applyjob/:id",
+        element: <PrivetRoute> <ApplyJob></ApplyJob></PrivetRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/jobs/${params.id}`)
+    }
 ]);
 
 
