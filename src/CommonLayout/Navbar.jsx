@@ -12,7 +12,7 @@ const Navbar = () => {
             .then(() => {
                 console.log("log Out Succes Fully")
             })
-            .catch(err => console.log("log Out err"))
+            .catch(err => console.log("log Out err", err))
 
     }
 
@@ -23,7 +23,7 @@ const Navbar = () => {
         <li><NavLink>Home</NavLink></li>
         <li><NavLink>Home</NavLink></li>
         <li><NavLink>Home</NavLink></li>
-        <li><NavLink>Home</NavLink></li>
+        <li><NavLink to={`/job-application/${users?.email}`}>My Application</NavLink></li>
         <li><NavLink>{users?.email}</NavLink></li>
     </>
 
