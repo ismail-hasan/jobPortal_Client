@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddJob = () => {
 
@@ -6,7 +7,34 @@ const AddJob = () => {
         e.preventDefault()
         const formData = new FormData(e.target)
         const formObject = Object.fromEntries(formData.entries());
-        console.log(formObject)
+        const { min, max, currency, ...newFormData } = formObject
+        newFormData.selleryRange = { min, max, currency }
+        newFormData.requrireMent = newFormData.requrireMent.split("\n")
+        newFormData.responsbility = newFormData.responsbility.split("\n")
+        console.log(newFormData)
+
+
+        fetch("http://localhost:3000/jobs", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newFormData)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
 
@@ -84,7 +112,7 @@ const AddJob = () => {
                         <input
                             name='min'
                             placeholder='min'
-                            type="text"
+                            type="number"
                             className="border border-gray-300 p-2 w-full rounded"
                         />
                     </div>
@@ -93,7 +121,7 @@ const AddJob = () => {
                         <input
                             name='max'
                             placeholder='Max'
-                            type="text"
+                            type="number"
                             className="border border-gray-300 p-2 w-full rounded"
                         />
                     </div>
