@@ -9,6 +9,7 @@ import JobDetails from '../CommonLayout/JobDetails';
 import PrivetRoute from '../PrivetRoute/PrivetRoute';
 import ApplyJob from '../CommonLayout/ApplyJob';
 import MyApplication from '../CommonLayout/MyApplication';
+import AddJob from '../CommonLayout/AddJob';
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
     {
         path: "/job-application/:email",
         element: <PrivetRoute> <MyApplication></MyApplication></PrivetRoute>,
+    },
+    {
+        path: "/addjob",
+        element: <PrivetRoute> <AddJob></AddJob></PrivetRoute>,
     }
 ]);
 

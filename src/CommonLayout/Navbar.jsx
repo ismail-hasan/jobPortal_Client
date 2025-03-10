@@ -20,10 +20,9 @@ const Navbar = () => {
 
     const links = <>
 
-        <li><NavLink>Home</NavLink></li>
-        <li><NavLink>Home</NavLink></li>
-        <li><NavLink>Home</NavLink></li>
+        <li><NavLink to={"/"}>Home</NavLink></li>
         <li><NavLink to={`/job-application/${users?.email}`}>My Application</NavLink></li>
+        <li><NavLink to={'/addjob'}>Add Job</NavLink></li>
         <li><NavLink>{users?.email}</NavLink></li>
     </>
 
