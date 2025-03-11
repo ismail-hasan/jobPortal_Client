@@ -24,13 +24,11 @@ const Login = () => {
         // login 
         logInUser(email, password)
             .then(result => {
-                console.log(result.user.email)
-                const user = { email: email }
-               
-                axios.post('http://localhost:3000/jwt', user)
-                    .then(data => {
-                        console.log(data)
-                    })
+                const email = result.user.email
+                const user = { email }
+                console.log("user", user)
+                axios.post("http://localhost:3000/jwt", user, { withCredentials: true })
+                    .then(res => console.log(res.data))
                 Navigator(loc)
             })
             .catch(err => console.log(err))

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import UseAuth from '../Hooks/UseAuth';
 import Navbar from './Navbar';
+import axios from 'axios';
 
 const MyApplication = () => {
     const [jobs, setJobs] = useState([])
     const { users } = UseAuth()
+
 
     useEffect(() => {
         fetch(`http://localhost:3000/job-application/?email=${users?.email}`)
@@ -14,6 +16,11 @@ const MyApplication = () => {
                 setJobs(data)
                 console.log(data)
             })
+
+       
+
+
+
     }, [users?.email])
 
 
